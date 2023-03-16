@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import '../styles/App.css';
 
 function ToDo() {
   return (<tr>
@@ -24,12 +23,28 @@ function App() {
     createdAt: '18:00',
   }
   ]);
+  const reverseTodos = () => {
+    setTodos([...todos].reverse());
+  };
 
   return (
     <div id="main">
-      <button>Reverse</button>
-      <table>
+      <button onClick={reverseTodos}>Reverse</button>
+       <table>
         <tbody>
+          {todos.map((todo) => (
+            <tr key={todo.id}>
+              <td>
+                <p>{todo.id}</p>
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <p>{todo.createdAt}</p>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
